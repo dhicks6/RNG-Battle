@@ -1,26 +1,27 @@
 import random
-
+import time
 class Team:
-    def __init__(self, name):
+    def __init__(self, name, lives):
         self.name = name
-        self.lives = 100
+        self.lives = lives
         self.battles_won = 0
         
     def get_random_number(self):
         return random.randint(1, 6)
     
-
-team1 = Team('Team 1')
-team2 = Team('Team 2')
+teams_lives = int(input("How many lived would you both teams to have?"))
+team1 = Team('Team 1', teams_lives)
+team2 = Team('Team 2', teams_lives)
 
 def reset_lives(team1, team2):
-    team1.lives = 100
-    team2.lives = 100
+    team1.lives = teams_lives
+    team2.lives = teams_lives
 
 while team1.battles_won < 5 and team2.battles_won < 5:
     reset_lives(team1, team2)
     
     while team1.lives > 0 and team2.lives > 0:
+        
         team1roll = team1.get_random_number()
         team2roll = team2.get_random_number()
         print(f"Team 1's roll is {team1roll}, Team 2's roll is {team2roll}.")
@@ -44,7 +45,7 @@ while team1.battles_won < 5 and team2.battles_won < 5:
             team1.battles_won += 1
             print(f"Team 1 has won this battle and is at {team1.battles_won} battles won!")
             break
-            
+        time.sleep(5)
     if team1.battles_won == 5:
         print(f"Team 1 has won the 5 battle war! Team 2 was a {team2.battles_won} victories.")
         
