@@ -1,14 +1,25 @@
 import random
 import time
+
 class Team:
     def __init__(self, name, lives):
         self.name = name
         self.lives = lives
         self.battles_won = 0
         
-    def get_random_number(self):
-        return random.randint(1, 6)
-    
+        def get_random_number(self):
+            return random.randint(1, 6)
+
+
+class Roll:
+    def __init__(self, low_number, high_number):
+        self.low_number = low_number
+        self.high_number = high_number
+        
+                
+    def get_random_number(self, low_number, high_number):
+        return random.randint(low_number, high_number)
+
 teams_lives = int(input("How many lived would you both teams to have?"))
 team1 = Team('Team 1', teams_lives)
 team2 = Team('Team 2', teams_lives)
